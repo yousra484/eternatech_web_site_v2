@@ -45,7 +45,8 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:3000',
     'https://eternatech.net',
-    'https://www.eternatech.net'
+    'https://www.eternatech.net',
+    'https://eternatech-web-site-v2.onrender.com'
 ];
 
 app.use(cors({

@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import { ArrowLeft, Check, Home, Send, Loader2, CheckCircle } from 'lucide-react';
+import { CONTACT_ENDPOINT } from '../../config/api';
 
 // Composant Canvas pour l'arrière-plan animé
 function TechBackground() {
@@ -418,7 +419,7 @@ export default function ServicePage() {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:3001/api/contact', {
+            const response = await fetch(CONTACT_ENDPOINT, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

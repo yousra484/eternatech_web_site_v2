@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Mail } from 'lucide-react';
+import { CONTACT_ENDPOINT } from '../config/api';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ export default function Contact() {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('http://localhost:3001/api/contact', {
+            const response = await fetch(CONTACT_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
