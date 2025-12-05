@@ -72,30 +72,33 @@ app.use(helmet({
 }));
 
 // Configuration du transporteur Nodemailer pour contact@eternatech.net
+// Utilise le port 587 avec STARTTLS (compatible avec Render)
 const contactTransporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'smtp.hostinger.com',
-  port: parseInt(process.env.EMAIL_PORT) || 465,
-  secure: true,
+  port: parseInt(process.env.EMAIL_PORT) || 587,
+  secure: false, // false pour port 587 (STARTTLS)
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    ciphers: 'SSLv3'
   }
 });
 
 // Configuration du transporteur Nodemailer pour service@eternatech.net
 const serviceTransporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'smtp.hostinger.com',
-  port: parseInt(process.env.EMAIL_PORT) || 465,
-  secure: true,
+  port: parseInt(process.env.EMAIL_PORT) || 587,
+  secure: false, // false pour port 587 (STARTTLS)
   auth: {
     user: process.env.SERVICE_EMAIL_USER || 'service@eternatech.net',
     pass: process.env.SERVICE_EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    ciphers: 'SSLv3'
   }
 });
 
